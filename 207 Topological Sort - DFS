@@ -1,0 +1,44 @@
+class Solution {
+   List<List<Integer>> graph = new ArrayList<>();
+  
+
+   public boolean canFinish(int numCourses, int[][] prerequisites) {
+       for (int i = 0; i < numCourses; i++) {
+           graph.add(new ArrayList<>());
+       }
+
+       boolean[] visiting = new boolean[numCourses];
+       boolean[] visited = new boolean[numCourses];
+
+       // add adjList, graph showing the prerequisites relation
+       for (int[] pair : prerequisites) {
+           graph.get(pair[1]).add(pair[0]);
+       }
+
+       for (int[] pair : prerequisites) {
+           if (hasCycle(pair[0], visiting, visited)) {
+               return false;
+           }
+       }
+
+       return true;
+   }
+
+   boolean hasCycle(int course, boolean[] visiting, boolean[] visited) {
+       if (visiting[course]) return true; // cycle happen
+       if (visited[course]) return false; // visited
+
+       visiting[course] = true;
+
+       for (int neighbor : graph.get(course)) {
+           if (hasCycle(neighbor, visiting, visited)) {
+               return true;
+           }
+       }
+       visiting[course] = false;
+       visited[course] = true;
+
+       return false;
+   }
+
+}
