@@ -1,3 +1,35 @@
+/* 
+Let’s analyze the code step by step:
+	1.	Building the Heap:
+You iterate over the nums array (of size n) and add each element to the priority queue. Each insertion takes O(\log n) in the worst case. Therefore, this loop takes:
+
+O(n \log n)
+
+	2.	Extracting k Elements:
+You then perform k poll operations from the heap. Each poll() operation takes O(\log n) time, so this loop takes:
+
+O(k \log n)
+
+	3.	Overall Time Complexity:
+Combining both parts, the total time complexity is:
+
+O(n \log n + k \log n)
+
+In the worst case where k \approx n, this simplifies to:
+
+O(n \log n)
+
+	4.	Space Complexity:
+The heap stores all n elements from the input array, resulting in:
+
+O(n)
+
+
+Final Answer
+	•	Time Complexity: O(n \log n)
+	•	Space Complexity: O(n)
+*/
+
 Both approaches use a heap (PriorityQueue), but they differ in terms of efficiency and memory usage. Let’s compare them.
 
 Approach 1 (Min-Heap of Size k) – My Approach
