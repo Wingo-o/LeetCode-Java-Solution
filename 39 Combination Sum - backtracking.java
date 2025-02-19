@@ -1,3 +1,19 @@
+/*
+The time complexity of this backtracking solution is exponential in the worst case. More specifically:
+
+- **Worst-case Time Complexity:**  
+  In the worst-case scenario, if you let \(T\) be the target value and \(m\) be the smallest candidate number, then the maximum depth of the recursion (i.e. the maximum number of numbers you can add before exceeding \(T\)) is roughly \(T/m\). At each recursive call, you have up to \(n\) choices (where \(n\) is the number of candidates). This gives an approximate worst-case complexity of  
+  \[
+  O(n^{(T/m)})
+  \]  
+  This exponential complexity arises because the algorithm explores all possible combinations that sum up to \(T\).
+
+- **Space Complexity:**  
+  The space complexity is determined by the maximum recursion depth (which is \(O(T/m)\)) and the space needed to store each valid combination. In addition, if there are many valid combinations, the output list can grow significantly.
+
+In summary, while the average-case performance may be better depending on the input data and pruning (like when the target is quickly exceeded), the worst-case time complexity of this approach is exponential \(O(n^{(T/m)})\).
+*/
+
 class Solution {
 
     List<List<Integer>> results = new ArrayList<>();
